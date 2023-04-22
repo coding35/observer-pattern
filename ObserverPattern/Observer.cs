@@ -1,17 +1,20 @@
+using System;
 using ObserverPattern.Interface;
 
 namespace ObserverPattern;
 
 public class Observer : IObserver
-{
-    public Observer(int id)
+{ 
+    private Subject _subject { get; set; }
+    public Observer(int id, Subject subject)
     {
         Id = id;
+        _subject = subject;
     }
-    
-    public int Id  { get; set; }
-    public void Update(ISubject subject)
+
+    private int Id  { get; set; }
+    public void Update()
     {
-        Console.WriteLine($"Observer {Id}: Subject says: {subject.GetState().Message}");
+        Console.WriteLine($"Observer {Id}: Subject says: {_subject.GetState().Message}");
     }
 }

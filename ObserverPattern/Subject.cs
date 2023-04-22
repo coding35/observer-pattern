@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using ObserverPattern.Interface;
 
 namespace ObserverPattern;
@@ -10,6 +12,7 @@ public class Subject : ISubject
     
     public Subject()
     {
+        // reference to the state object so observers can get the state or unsubscribe
         State = new SubjectState();
         Observers = new List<IObserver>();
     }
@@ -26,7 +29,7 @@ public class Subject : ISubject
 
     public void NotifyObservers()
     {
-        Observers.ForEach(observer => observer.Update(this));
+        Observers.ForEach(observer => observer.Update());
     }
 
     public SubjectState GetState()
@@ -34,7 +37,7 @@ public class Subject : ISubject
         return State;
     }
 
-    public void DoSomething(string message)
+    public void Say(string message)
     {
         State.Message = message;
         Console.WriteLine("Subject: Salutation changed to: " + State.Message + "");

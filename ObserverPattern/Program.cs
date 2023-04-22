@@ -6,12 +6,12 @@ using ObserverPattern;
 Subject subject = new Subject();
 
 // add observers
-subject.AddObserver(new Observer(1));
-subject.AddObserver(new Observer(2));
-subject.AddObserver(new Observer(3));
+subject.AddObserver(new Observer(1, subject));
+subject.AddObserver(new Observer(2, subject));
+subject.AddObserver(new Observer(3, subject));
 
 // change state on the subject, which will notify all observers
-subject.DoSomething("Good Morning!");
-subject.DoSomething("Good Day!");
-subject.DoSomething("Good Afternoon!");
-subject.DoSomething("Good Evening!");
+subject.Say("Good Morning!");
+subject.Say("Good Day!");
+subject.Say("Good Afternoon!");
+subject.Say("Good Evening!");
